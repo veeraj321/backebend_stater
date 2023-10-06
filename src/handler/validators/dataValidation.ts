@@ -16,6 +16,7 @@ class DataValidations {
         if (!payload?.description || payload.description.trim() === "") {
             errorMsg = errorMsg + errormsg.ERRORS_MSG_CONSTANTS.descriptionIsRequired
         }
+        console.log("error ", errorMsg)
         if (errorMsg !== "") {
             throw new MyError(400, errorMsg)
         }

@@ -14,8 +14,8 @@ class ErrorDecorator {
             } catch (error) {
                 const errorStack: MyError = error as MyError;
                 const status = errorStack.statuscode || 500;
-                response.status(status).json({ message: errorStack.message });
-                throw error
+                response.status(status).json({ message: errorStack.message });//json must be last it will end the code
+
             }
         };
     }

@@ -9,8 +9,9 @@ import errorDecorators from "../decorators/errror -decorators"
 
 
 class RouteHandler {
-
+    @errorDecorators.handleResponseError
     public async creatData(request: Request, response: Response) {
+
         const getData: StartMeInterface = request.body;
         datavalidation.validationForCreateData(getData)
         const data = await modal.create(getData)
@@ -28,7 +29,7 @@ class RouteHandler {
         console.log(data);
 
     }
-
+    @errorDecorators.handleResponseError
     public async fetchData(request: Request, response: Response) {
         const data = await modal.find()
         response.status(200).json(data)
@@ -36,6 +37,7 @@ class RouteHandler {
 
     }
 
+    @errorDecorators.handleResponseError
     public async UpdateDataById(request: Request, response: Response) {
         const id = request.params.id
         const getData: StartMeInterface = request.body;
@@ -47,6 +49,7 @@ class RouteHandler {
 
     }
 
+    @errorDecorators.handleResponseError
     public async deleteDataById(request: Request, response: Response) {
         const id = request.params.id
         idValidators.ObjectIdValidators(id);
@@ -56,6 +59,7 @@ class RouteHandler {
 
     }
 
+    @errorDecorators.handleResponseError
     public async deleteData(request: Request, response: Response) {
         console.log("sdfgj");
         const data = await modal.deleteMany()
